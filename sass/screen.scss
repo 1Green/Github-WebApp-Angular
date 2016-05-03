@@ -1,0 +1,411 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass";
+
+
+
+$shadow:0 0 5px 1px #333;
+
+/* MEDIA QUERY MIXINS */
+
+$phone-width:385px;
+$tablet-width: 530px;
+$desktop-width: 670px;
+$large-width:805px;
+
+
+@mixin phone {
+  @media (max-width: #{$phone-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (max-width: #{$large-width}) {
+    @content;
+  }
+}
+
+/*/////////////////////////////////////////////////*/
+a {
+	color:black;
+	text-decoration: none;
+	font-size:1.1em;
+	font-weight: 600;
+}
+
+body {
+	font-family:sans-serif;
+	width:100%;
+	background-color: #333;
+
+	.cont{
+
+		@include display-flex;
+		@include flex-flow(column nowrap);
+		margin:0 auto;
+		max-width:800px;
+		box-shadow:0 0 2px 1px #000;
+		height: 92vh;
+		overflow-y:scroll;
+		overflow-x:hidden;
+		background-color: white;
+		margin-top: 4vh;
+		@include large {
+			height:100vh;
+			margin-top: 0;
+		}
+
+		.search {
+			@include display-flex;
+			@include flex-flow(row wrap);
+			@include align-items(center);
+			@include justify-content(space-between);
+			padding:10px;
+			max-width:780px;
+			position:fixed;
+			z-index:999;
+			margin:0 auto;
+			box-shadow:1px 1px 2px 0px #333;
+			background-color: #FCFCFC;
+			left:0;
+			right:0;
+			@include desktop {
+				@include justify-content(center);
+			}
+
+			.searchBox {
+					
+				@include display-flex;
+				@include flex-flow(row wrap);
+				@include justify-content(center);
+				@include desktop {
+					margin:10px 0 10px 0;
+				}
+
+				input[type="text"] {
+					box-shadow:10px 10px 28px 1px #CCC inset;
+					border:1px solid #999;
+					height:22px;
+					width:250px;
+					margin-left:30px;
+					margin-right: 5px;
+					padding:0 10px;
+					transition:all 0.3s ease-in-out;
+					@include phone {
+						margin-left:0;
+						width:150px;
+					}
+					&:focus {
+						box-shadow:10px 10px 28px 1px #AAA inset;
+					}
+
+				}
+
+				input[type="submit"] {
+					height:22px;
+					border:none;
+					box-shadow:0 1px 3px #999;
+					background-color: white;
+					transition:all 0.3s ease-in-out;
+					&:hover {
+						box-shadow:0 1px 3px #333;
+					}
+
+				}
+
+			}
+
+			.rightSearch {
+				@include display-flex;
+				@include flex-flow(row nowrap);
+			
+				select {
+					margin-left:10px;
+				}		
+	
+			}
+
+		}
+
+
+
+		.searchResult {
+
+			margin-top:45px;
+			@include desktop {
+				margin-top:80px;
+			}
+	
+			.repos {
+				@include display-flex;
+				@include flex-flow(row nowrap);
+				@include justify-content(space-between);
+				@include align-items(center);
+				@include flex(0 1 800px);
+				padding:15px;
+				border-bottom:1px solid #333;
+				position:relative;
+				transition: all 0.2s ease-in-out;
+				&:hover {
+					background-color: #DDD;
+					transition: all 0.2s ease-in-out;
+				}
+				&:active  {
+					animation:blink 0.1s step-start;
+				}
+
+
+				.avatar {
+					margin-right:25px;
+					@include display-flex;
+
+					img {
+						height:120px;
+						box-shadow:0 0 2px 1px #333;
+						@include tablet {
+							height:50px;
+						}
+					}
+				}
+
+				.description {
+					@include display-flex;
+					@include flex-flow(column nowrap);
+					@include align-self(flex-start);
+					@include flex(1 1 300px);
+					margin:15px auto 0 0;
+
+					h3{
+						margin-top:5px;
+						color:#666;
+						font-size:0.9em;
+					}
+					
+					span {
+						font-weight: 600;
+						color:#333;
+					}
+
+
+				}
+
+				.points {
+					@include display-flex;
+					@include flex-flow(column nowrap);
+					margin:0 auto;
+				
+
+					.forks {
+						@include display-flex;
+						@include flex-flow(row nowrap);
+						@include justify-content(space-between);
+						color:#333;
+						border:1px solid #CCC;
+						border-radius: 3px;
+						padding:2px;
+						margin-bottom:5px;
+
+						i {
+							margin-right:5px;
+						}
+					
+					}
+
+					.stars {
+						@extend .forks;
+					}
+
+				}
+
+
+
+			}
+
+		}
+
+		.repoDetails {
+
+			padding-top:70px;
+			box-shadow:0 0 0 0 white;
+			width:80%;
+			height: 90%;
+			margin:0 auto;
+			position:relative;
+
+
+			@include desktop {
+				padding-top:100px;
+			}
+
+			canvas {
+
+			}
+
+			.commiterDetails {
+				
+				padding:40px 20px;
+				margin:10% auto 50px auto;
+				@include display-flex;
+				@include flex-flow(row nowrap);
+				@include justify-content(space-between);
+				box-shadow:$shadow;
+				transition: all 0.5s ease-in-out;
+				position:relative;
+
+				.userInfo {
+					
+					@include display-flex;
+					@include flex-flow(column nowrap);
+					@include justify-content(center);
+					@include align-items(center);	
+					@include flex(1 1 20%);
+					text-align: center;
+
+					img {
+						height:120px;
+						margin-bottom:20px;
+						box-shadow:0 0 2px 1px #333;
+						@include tablet {
+							height:50px;
+						}
+					}
+
+					p {
+						font-weight: 200;
+						font-size:0.9em;
+						color: #333;
+					}
+				
+				}
+
+				.commitInfo {
+					padding-top:20px;
+					@include display-flex;
+					@include flex-flow(column nowrap);
+					@include justify-content(flex-start);
+					@include align-items(center);	
+					@include flex(0 1 80%);
+					text-align:center;
+					margin-bottom:30px;
+
+					p {
+						span{
+							font-weight: 600;
+						}
+						
+						#light {
+							font-weight: 100;
+							color: #333;
+						}					
+					}
+				
+				}
+
+			}
+
+			.canvasPie {
+				
+				margin-bottom:30px;
+				width: 100% !important;
+				box-shadow:$shadow;
+				padding:10px;
+				transition: all 0.5s ease-in-out;
+				position:relative;
+
+
+			}	
+
+			.canvasLine {
+				width: 100% !important;
+				position:absolute;
+				transition:all 1s ease-in-out;
+				box-shadow:$shadow;
+				padding:10px;
+			}
+
+			.canvasDay {
+				width: 100% !important;
+				position:absolute;
+				transition:all 1s ease-in-out;
+				box-shadow:$shadow;
+				padding:10px;
+			}
+
+
+
+		}
+
+	}
+
+
+}
+
+
+/*////////////////// NG-CLASS &  NG-Animate /////////////////*/
+
+
+.animate-show {
+	opacity: 1;
+	left:0;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+	transition: all 1s ease-in-out;
+}
+
+.animate-show.ng-hide {
+	opacity: 0;
+	left:3000px;
+
+}
+
+.animate-show-right {
+	opacity: 1;
+	right:0;
+}
+
+.animate-show-right.ng-hide-add, .animate-show-right.ng-hide-remove {
+	transition: all 0.5s ease-in-out;
+}
+
+.animate-show-right.ng-hide {
+	opacity: 0;
+	right:2000px;
+
+}
+
+@keyframes blink {
+	0% {
+		background: rgba(0,0,0,0.8);
+	}
+	100% {
+		background: rgba(255,255,255,0.8);
+	}
+
+}
+
+
+
+
+
+
+
+
+

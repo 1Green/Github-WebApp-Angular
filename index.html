@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="bower_components/angular-chart.js/angular-chart.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script src="js/script.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="bower_components/angular-chart.js/angular-chart.js"></script>
+    <script src="https://code.angularjs.org/1.5.2/angular-animate.js"></script>
+    <script src="js/demoApp.js"></script>
+    <script src="js/controllers/todoList.js"></script>
+    <title>Angular App</title>
+  </head>
+  <body ng-app="demoApp" ng-controller="gitHubApp as app">
+    <div class="cont">
+      <div class="search">
+        <form ng-submit="search(repoSearch)" class="searchBox">
+          <input type="text" placeholder="Search here" ng-model="repoSearch">
+          <input type="submit" value="Search" ng-click="search(repoSearch)">
+        </form>
+        <div class="rightSearch">
+          <h4 ng-show="count &amp;&amp; !repoDetails.length">{{count}} repositories found</h4>
+          <h4 ng-show="repoDetails.length">Results for  the {{repoDetails.length}} last commits.</h4>
+          <select ng-model="sortBy" ng-show="!repoDetails.length">
+            <option value="">Sort by</option>
+            <option value="-score">Pertinence</option>
+            <option value="-stargazers_count">Stars</option>
+            <option value="-forks_count">Forks</option>
+          </select>
+        </div>
+      </div>
+      <div ng-show="!repoDetails.length" class="searchResult">
+        <div ng-repeat="repo in repos | orderBy : sortBy" ng-click="loadRepo(repo.full_name)" class="repos animate-repeat">  
+          <div class="avatar"><img src="{{repo.owner.avatar_url}}"></div>
+          <div class="description">
+            <h2>{{repo.name}} by <span>{{repo.owner.login}}</span></h2>
+            <h3>{{repo.description}}</h3>
+          </div>
+          <div class="points">
+            <div class="forks"><i aria-hidden="true" class="fa fa-code-fork"></i>
+              <p>{{repo.forks_count}}</p>
+            </div>
+            <div class="stars"><i i aria-hidden="true" class="fa fa-star"></i>
+              <p>{{repo.stargazers_count}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-show="repoDetails.length" class="repoDetails">
+        <div ng-show="pie == 1" class="canvasPie animate-show-right">
+          <canvas id="doughnut" chart-legend="true" chart-data="chartCount" chart-labels="chartLabel" chart-click="userDetails" class="chart chart-doughnut"></canvas>
+        </div>
+        <div ng-click="delayFade()" ng-show="pie == 3" class="commiterDetails animate-show-right">
+          <div class="userInfo"><img src="{{commiter.author.avatar_url}}"><a href="{{commiter.author.html_url}}" target="_blank">{{commiter.commit.author.name}}</a>
+            <p>{{commiter.commit.author.email}}</p>
+          </div>
+          <div class="commitInfo">
+            <p>Last commit on the <span>{{commitDate.fulldate}}</span> at <span>{{commitDate.fulltime}}</span><br><br></p>
+            <p>with message : <br><br> <span id="light">{{commiter.commit.message}}</span></p>
+          </div>
+        </div>
+        <div ng-click="graph = 2" ng-show="graph == 1" class="canvasLine animate-show">
+          <canvas id="line" chart-series="Commits" chart-data="lineDataComplete" chart-labels="lineLabel" chart-legend="false" class="chart chart-line"></canvas>
+        </div>
+        <div ng-click="graph = 1" ng-show="graph == 2" class="canvasDay animate-show">
+          <canvas id="line" chart-series="Commits" chart-data="dayDataComplete" chart-labels="dayLabel" chart-legend="false" class="chart chart-line"></canvas>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,451 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* MEDIA QUERY MIXINS */
+/*/////////////////////////////////////////////////*/
+/* line 46, ../sass/screen.scss */
+a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+/* line 53, ../sass/screen.scss */
+body {
+  font-family: sans-serif;
+  width: 100%;
+  background-color: #333;
+}
+/* line 58, ../sass/screen.scss */
+body .cont {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  max-width: 800px;
+  box-shadow: 0 0 2px 1px #000;
+  height: 92vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  margin-top: 4vh;
+}
+@media (max-width: 805px) {
+  /* line 58, ../sass/screen.scss */
+  body .cont {
+    height: 100vh;
+    margin-top: 0;
+  }
+}
+/* line 75, ../sass/screen.scss */
+body .cont .search {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  padding: 10px;
+  max-width: 780px;
+  position: fixed;
+  z-index: 999;
+  margin: 0 auto;
+  box-shadow: 1px 1px 2px 0px #333;
+  background-color: #FCFCFC;
+  left: 0;
+  right: 0;
+}
+@media (max-width: 670px) {
+  /* line 75, ../sass/screen.scss */
+  body .cont .search {
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+}
+/* line 93, ../sass/screen.scss */
+body .cont .search .searchBox {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+@media (max-width: 670px) {
+  /* line 93, ../sass/screen.scss */
+  body .cont .search .searchBox {
+    margin: 10px 0 10px 0;
+  }
+}
+/* line 102, ../sass/screen.scss */
+body .cont .search .searchBox input[type="text"] {
+  box-shadow: 10px 10px 28px 1px #CCC inset;
+  border: 1px solid #999;
+  height: 22px;
+  width: 250px;
+  margin-left: 30px;
+  margin-right: 5px;
+  padding: 0 10px;
+  transition: all 0.3s ease-in-out;
+}
+@media (max-width: 385px) {
+  /* line 102, ../sass/screen.scss */
+  body .cont .search .searchBox input[type="text"] {
+    margin-left: 0;
+    width: 150px;
+  }
+}
+/* line 115, ../sass/screen.scss */
+body .cont .search .searchBox input[type="text"]:focus {
+  box-shadow: 10px 10px 28px 1px #AAA inset;
+}
+/* line 121, ../sass/screen.scss */
+body .cont .search .searchBox input[type="submit"] {
+  height: 22px;
+  border: none;
+  box-shadow: 0 1px 3px #999;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+/* line 127, ../sass/screen.scss */
+body .cont .search .searchBox input[type="submit"]:hover {
+  box-shadow: 0 1px 3px #333;
+}
+/* line 135, ../sass/screen.scss */
+body .cont .search .rightSearch {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+/* line 139, ../sass/screen.scss */
+body .cont .search .rightSearch select {
+  margin-left: 10px;
+}
+/* line 149, ../sass/screen.scss */
+body .cont .searchResult {
+  margin-top: 45px;
+}
+@media (max-width: 670px) {
+  /* line 149, ../sass/screen.scss */
+  body .cont .searchResult {
+    margin-top: 80px;
+  }
+}
+/* line 156, ../sass/screen.scss */
+body .cont .searchResult .repos {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex: 0 1 800px;
+  flex: 0 1 800px;
+  padding: 15px;
+  border-bottom: 1px solid #333;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+/* line 166, ../sass/screen.scss */
+body .cont .searchResult .repos:hover {
+  background-color: #DDD;
+  transition: all 0.2s ease-in-out;
+}
+/* line 170, ../sass/screen.scss */
+body .cont .searchResult .repos:active {
+  animation: blink 0.1s step-start;
+}
+/* line 175, ../sass/screen.scss */
+body .cont .searchResult .repos .avatar {
+  margin-right: 25px;
+  display: -webkit-flex;
+  display: flex;
+}
+/* line 179, ../sass/screen.scss */
+body .cont .searchResult .repos .avatar img {
+  height: 120px;
+  box-shadow: 0 0 2px 1px #333;
+}
+@media (max-width: 530px) {
+  /* line 179, ../sass/screen.scss */
+  body .cont .searchResult .repos .avatar img {
+    height: 50px;
+  }
+}
+/* line 188, ../sass/screen.scss */
+body .cont .searchResult .repos .description {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  -webkit-flex: 1 1 300px;
+  flex: 1 1 300px;
+  margin: 15px auto 0 0;
+}
+/* line 195, ../sass/screen.scss */
+body .cont .searchResult .repos .description h3 {
+  margin-top: 5px;
+  color: #666;
+  font-size: 0.9em;
+}
+/* line 201, ../sass/screen.scss */
+body .cont .searchResult .repos .description span {
+  font-weight: 600;
+  color: #333;
+}
+/* line 209, ../sass/screen.scss */
+body .cont .searchResult .repos .points {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+}
+/* line 215, ../sass/screen.scss */
+body .cont .searchResult .repos .points .forks, body .cont .searchResult .repos .points .stars {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  color: #333;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  padding: 2px;
+  margin-bottom: 5px;
+}
+/* line 225, ../sass/screen.scss */
+body .cont .searchResult .repos .points .forks i, body .cont .searchResult .repos .points .stars i {
+  margin-right: 5px;
+}
+/* line 243, ../sass/screen.scss */
+body .cont .repoDetails {
+  padding-top: 70px;
+  box-shadow: 0 0 0 0 white;
+  width: 80%;
+  height: 90%;
+  margin: 0 auto;
+  position: relative;
+}
+@media (max-width: 670px) {
+  /* line 243, ../sass/screen.scss */
+  body .cont .repoDetails {
+    padding-top: 100px;
+  }
+}
+/* line 261, ../sass/screen.scss */
+body .cont .repoDetails .commiterDetails {
+  padding: 40px 20px;
+  margin: 10% auto 50px auto;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  box-shadow: 0 0 5px 1px #333;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+}
+/* line 272, ../sass/screen.scss */
+body .cont .repoDetails .commiterDetails .userInfo {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex: 1 1 20%;
+  flex: 1 1 20%;
+  text-align: center;
+}
+/* line 281, ../sass/screen.scss */
+body .cont .repoDetails .commiterDetails .userInfo img {
+  height: 120px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 2px 1px #333;
+}
+@media (max-width: 530px) {
+  /* line 281, ../sass/screen.scss */
+  body .cont .repoDetails .commiterDetails .userInfo img {
+    height: 50px;
+  }
+}
+/* line 290, ../sass/screen.scss */
+body .cont .repoDetails .commiterDetails .userInfo p {
+  font-weight: 200;
+  font-size: 0.9em;
+  color: #333;
+}
+/* line 298, ../sass/screen.scss */
+body .cont .repoDetails .commiterDetails .commitInfo {
+  padding-top: 20px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex: 0 1 80%;
+  flex: 0 1 80%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+/* line 309, ../sass/screen.scss */
+body .cont .repoDetails .commiterDetails .commitInfo p span {
+  font-weight: 600;
+}
+/* line 313, ../sass/screen.scss */
+body .cont .repoDetails .commiterDetails .commitInfo p #light {
+  font-weight: 100;
+  color: #333;
+}
+/* line 323, ../sass/screen.scss */
+body .cont .repoDetails .canvasPie {
+  margin-bottom: 30px;
+  width: 100% !important;
+  box-shadow: 0 0 5px 1px #333;
+  padding: 10px;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+}
+/* line 335, ../sass/screen.scss */
+body .cont .repoDetails .canvasLine {
+  width: 100% !important;
+  position: absolute;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 0 5px 1px #333;
+  padding: 10px;
+}
+/* line 343, ../sass/screen.scss */
+body .cont .repoDetails .canvasDay {
+  width: 100% !important;
+  position: absolute;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 0 5px 1px #333;
+  padding: 10px;
+}
+
+/*////////////////// NG-CLASS &  NG-Animate /////////////////*/
+/* line 364, ../sass/screen.scss */
+.animate-show {
+  opacity: 1;
+  left: 0;
+}
+
+/* line 369, ../sass/screen.scss */
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+  transition: all 1s ease-in-out;
+}
+
+/* line 373, ../sass/screen.scss */
+.animate-show.ng-hide {
+  opacity: 0;
+  left: 3000px;
+}
+
+/* line 379, ../sass/screen.scss */
+.animate-show-right {
+  opacity: 1;
+  right: 0;
+}
+
+/* line 384, ../sass/screen.scss */
+.animate-show-right.ng-hide-add, .animate-show-right.ng-hide-remove {
+  transition: all 0.5s ease-in-out;
+}
+
+/* line 388, ../sass/screen.scss */
+.animate-show-right.ng-hide {
+  opacity: 0;
+  right: 2000px;
+}
+
+@keyframes blink {
+  0% {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.8);
+  }
+}

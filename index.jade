@@ -1,0 +1,60 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css")
+		link(href='bower_components/angular-chart.js/angular-chart.css' media='screen, projection' rel='stylesheet' type='text/css')
+		link(href='stylesheets/screen.css' media='screen, projection' rel='stylesheet' type='text/css')
+		script(src='js/script.js')
+		script(src='bower_components/angular/angular.js')
+		script(src="js/Chart.js")
+		script(src="js/angular-route.js")
+		script(src="bower_components/angular-chart.js/angular-chart.js")
+		script(src="https://code.angularjs.org/1.5.2/angular-animate.js")
+		script(src="js/demoApp.js")
+		script(src="js/controllers/todoList.js")
+		title Angular App
+	body(ng-app="demoApp" ng-controller="gitHubApp as app")
+		div.cont
+			div.search
+				form.searchBox(ng-submit="search(repoSearch)")
+					input(type='text' placeholder="Search here" ng-model="repoSearch")
+					input(type="submit" value="Search" ng-click="search(repoSearch)")
+				div.rightSearch
+					h4(ng-show="count && !repoDetails.length") {{count}} repositories found
+					h4(ng-show="repoDetails.length") Results for  the {{repoDetails.length}} last commits.
+					select(ng-model="sortBy" ng-show="!repoDetails.length")
+						option(value="") Sort by
+						option(value="-score") Pertinence
+						option(value="-stargazers_count") Stars
+						option(value="-forks_count") Forks
+			div.searchResult(ng-show="!repoDetails.length")
+				div.repos(ng-repeat="repo in repos | orderBy : sortBy" ng-click="loadRepo(repo.full_name)" class="animate-repeat")   
+					div.avatar
+						img(src="{{repo.owner.avatar_url}}")
+					div.description
+						h2 {{repo.name}} by <span>{{repo.owner.login}}</span>
+						h3 {{repo.description}}
+						
+					div.points
+						.forks
+							i(class="fa fa-code-fork" aria-hidden="true")
+							p {{repo.forks_count}}
+						.stars
+							i(i class="fa fa-star" aria-hidden="true")
+							p {{repo.stargazers_count}}
+			div.repoDetails(ng-show="repoDetails.length")
+				div.canvasPie( ng-show="pie == 1" class="animate-show-right")
+					canvas(id="doughnut" chart-legend="true" class="chart chart-doughnut" chart-data="chartCount" chart-labels="chartLabel" chart-click="userDetails")
+				div.commiterDetails(ng-click="delayFade()" ng-show="pie == 3" class="animate-show-right")
+					div.userInfo
+						img(src="{{commiter.author.avatar_url}}")
+						a(href="{{commiter.author.html_url}}" target="_blank") {{commiter.commit.author.name}}
+						p {{commiter.commit.author.email}}
+					div.commitInfo
+						p Last commit on the <span>{{commitDate.fulldate}}</span> at <span>{{commitDate.fulltime}}</span><br><br>
+						p with message : <br><br> <span id="light">{{commiter.commit.message}}</span>
+				div.canvasLine(ng-click="graph = 2" ng-show="graph == 1" class="animate-show")
+					canvas(id="line" class="chart chart-line" chart-series="Commits" chart-data="lineDataComplete" chart-labels="lineLabel" chart-legend="false")
+				div.canvasDay(ng-click="graph = 1" ng-show="graph == 2" class="animate-show")
+					canvas(id="line" class="chart chart-line" chart-series="Commits" chart-data="dayDataComplete" chart-labels="dayLabel" chart-legend="false")
