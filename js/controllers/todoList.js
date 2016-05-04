@@ -41,6 +41,7 @@ gitHubApp.controller('gitHubApp', ['$scope', '$http','$window','$timeout',
 					$scope.piebot = 1;
 					$scope.repoDetails = data;
 					$scope.users = {};
+					$scope.hideTitle = false;
 
 					$scope.chartLabel = [];
 					$scope.chartCount = [];
@@ -103,6 +104,7 @@ gitHubApp.controller('gitHubApp', ['$scope', '$http','$window','$timeout',
 					}, 1200);
 
 					$timeout(function(){
+						$scope.hideTitle = true;
 						$scope.dayLabel = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 						$scope.weekDay.forEach(countDay);
 						$scope.dayDataComplete.push($scope.dayData);

@@ -44,7 +44,7 @@ html(lang="en")
 							i(i class="fa fa-star" aria-hidden="true")
 							p {{repo.stargazers_count}}
 			div.repoDetails(ng-show="repoDetails.length")
-				h4 Click on charts for more details.
+				h4(ng-show="!hideTitle" class="animate-show") Click on charts for more details.
 				div.canvasPie(ng-click="false" ng-show="pie == 1" class="animate-show-right")
 					canvas(id="doughnut" chart-legend="true" class="chart chart-doughnut" chart-data="chartCount" chart-labels="chartLabel" chart-click="userDetails")
 				div.commiterDetails(ng-click="delayFade()" ng-show="pie == 3" class="animate-show-right")

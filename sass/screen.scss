@@ -252,17 +252,19 @@ body {
 
 		.repoDetails {
 
-			padding:0px 20px 20px 0;
+			padding:60px 20px 20px 0;
 			width:80%;
 			margin:0 auto;
 			position:relative;
 			text-align:center;
 
-			h4 {
-				margin:60px 0 20px 0;
 				@include desktop {
-					margin-top:100px;
+					padding-top:100px;
 				}
+
+			h4 {
+				margin:0px 0 20px 0;
+
 			}
 
 
@@ -342,6 +344,7 @@ body {
 			.canvasPie {
 				
 				margin-bottom:30px;
+				margin-top: 20px;
 				width: 100% !important;
 				box-shadow:$shadow;
 				padding:10px;
