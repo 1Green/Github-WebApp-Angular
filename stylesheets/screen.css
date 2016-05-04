@@ -67,9 +67,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* MEDIA QUERY MIXINS */
-/*/////////////////////////////////////////////////*/
-/* line 46, ../sass/screen.scss */
+/*
+
+ MEDIA QUERY MIXINS 
+
+ */
+/*/////////////////////// 
+
+Main CSS 
+
+//////////////////////////*/
+/* line 55, ../sass/screen.scss */
 a {
   color: black;
   text-decoration: none;
@@ -77,18 +85,20 @@ a {
   font-weight: 600;
 }
 
-/* line 53, ../sass/screen.scss */
+/* line 62, ../sass/screen.scss */
 body {
   font-family: sans-serif;
   width: 100%;
   background-color: #333;
 }
-/* line 58, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 body .cont {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-flow: column nowrap;
   flex-flow: column nowrap;
+  -webkit-align-items: center;
+  align-items: center;
   margin: 0 auto;
   max-width: 800px;
   box-shadow: 0 0 2px 1px #000;
@@ -99,13 +109,13 @@ body .cont {
   margin-top: 4vh;
 }
 @media (max-width: 805px) {
-  /* line 58, ../sass/screen.scss */
+  /* line 67, ../sass/screen.scss */
   body .cont {
     height: 100vh;
     margin-top: 0;
   }
 }
-/* line 75, ../sass/screen.scss */
+/* line 85, ../sass/screen.scss */
 body .cont .search {
   display: -webkit-flex;
   display: flex;
@@ -126,13 +136,13 @@ body .cont .search {
   right: 0;
 }
 @media (max-width: 670px) {
-  /* line 75, ../sass/screen.scss */
+  /* line 85, ../sass/screen.scss */
   body .cont .search {
     -webkit-justify-content: center;
     justify-content: center;
   }
 }
-/* line 93, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 body .cont .search .searchBox {
   display: -webkit-flex;
   display: flex;
@@ -142,34 +152,34 @@ body .cont .search .searchBox {
   justify-content: center;
 }
 @media (max-width: 670px) {
-  /* line 93, ../sass/screen.scss */
+  /* line 103, ../sass/screen.scss */
   body .cont .search .searchBox {
     margin: 10px 0 10px 0;
   }
 }
-/* line 102, ../sass/screen.scss */
+/* line 112, ../sass/screen.scss */
 body .cont .search .searchBox input[type="text"] {
   box-shadow: 10px 10px 28px 1px #CCC inset;
   border: 1px solid #999;
   height: 22px;
   width: 250px;
-  margin-left: 30px;
+  margin-left: 20px;
   margin-right: 5px;
   padding: 0 10px;
   transition: all 0.3s ease-in-out;
 }
 @media (max-width: 385px) {
-  /* line 102, ../sass/screen.scss */
+  /* line 112, ../sass/screen.scss */
   body .cont .search .searchBox input[type="text"] {
     margin-left: 0;
     width: 150px;
   }
 }
-/* line 115, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 body .cont .search .searchBox input[type="text"]:focus {
   box-shadow: 10px 10px 28px 1px #AAA inset;
 }
-/* line 121, ../sass/screen.scss */
+/* line 131, ../sass/screen.scss */
 body .cont .search .searchBox input[type="submit"] {
   height: 22px;
   border: none;
@@ -177,32 +187,32 @@ body .cont .search .searchBox input[type="submit"] {
   background-color: white;
   transition: all 0.3s ease-in-out;
 }
-/* line 127, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 body .cont .search .searchBox input[type="submit"]:hover {
   box-shadow: 0 1px 3px #333;
 }
-/* line 135, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 body .cont .search .rightSearch {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-flow: row nowrap;
   flex-flow: row nowrap;
 }
-/* line 139, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 body .cont .search .rightSearch select {
   margin-left: 10px;
 }
-/* line 149, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 body .cont .searchResult {
   margin-top: 45px;
 }
 @media (max-width: 670px) {
-  /* line 149, ../sass/screen.scss */
+  /* line 159, ../sass/screen.scss */
   body .cont .searchResult {
     margin-top: 80px;
   }
 }
-/* line 156, ../sass/screen.scss */
+/* line 166, ../sass/screen.scss */
 body .cont .searchResult .repos {
   display: -webkit-flex;
   display: flex;
@@ -219,33 +229,33 @@ body .cont .searchResult .repos {
   position: relative;
   transition: all 0.2s ease-in-out;
 }
-/* line 166, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 body .cont .searchResult .repos:hover {
   background-color: #DDD;
   transition: all 0.2s ease-in-out;
 }
-/* line 170, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 body .cont .searchResult .repos:active {
   animation: blink 0.1s step-start;
 }
-/* line 175, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 body .cont .searchResult .repos .avatar {
   margin-right: 25px;
   display: -webkit-flex;
   display: flex;
 }
-/* line 179, ../sass/screen.scss */
+/* line 189, ../sass/screen.scss */
 body .cont .searchResult .repos .avatar img {
   height: 120px;
   box-shadow: 0 0 2px 1px #333;
 }
 @media (max-width: 530px) {
-  /* line 179, ../sass/screen.scss */
+  /* line 189, ../sass/screen.scss */
   body .cont .searchResult .repos .avatar img {
     height: 50px;
   }
 }
-/* line 188, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 body .cont .searchResult .repos .description {
   display: -webkit-flex;
   display: flex;
@@ -257,18 +267,18 @@ body .cont .searchResult .repos .description {
   flex: 1 1 300px;
   margin: 15px auto 0 0;
 }
-/* line 195, ../sass/screen.scss */
+/* line 205, ../sass/screen.scss */
 body .cont .searchResult .repos .description h3 {
   margin-top: 5px;
   color: #666;
   font-size: 0.9em;
 }
-/* line 201, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
 body .cont .searchResult .repos .description span {
   font-weight: 600;
   color: #333;
 }
-/* line 209, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 body .cont .searchResult .repos .points {
   display: -webkit-flex;
   display: flex;
@@ -276,7 +286,7 @@ body .cont .searchResult .repos .points {
   flex-flow: column nowrap;
   margin: 0 auto;
 }
-/* line 215, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 body .cont .searchResult .repos .points .forks, body .cont .searchResult .repos .points .stars {
   display: -webkit-flex;
   display: flex;
@@ -290,39 +300,52 @@ body .cont .searchResult .repos .points .forks, body .cont .searchResult .repos 
   padding: 2px;
   margin-bottom: 5px;
 }
-/* line 225, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 body .cont .searchResult .repos .points .forks i, body .cont .searchResult .repos .points .stars i {
   margin-right: 5px;
 }
-/* line 243, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 body .cont .repoDetails {
-  padding-top: 70px;
-  box-shadow: 0 0 0 0 white;
+  padding: 0px 20px 20px 0;
   width: 80%;
   margin: 0 auto;
   position: relative;
+  text-align: center;
+}
+/* line 261, ../sass/screen.scss */
+body .cont .repoDetails h4 {
+  margin: 60px 0 20px 0;
 }
 @media (max-width: 670px) {
-  /* line 243, ../sass/screen.scss */
-  body .cont .repoDetails {
-    padding-top: 100px;
+  /* line 261, ../sass/screen.scss */
+  body .cont .repoDetails h4 {
+    margin-top: 100px;
   }
 }
-/* line 260, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 body .cont .repoDetails .commiterDetails {
-  padding: 40px 20px;
-  margin: 10% auto 50px auto;
+  padding: 40px 40px;
+  margin: 0px auto 30px auto;
+  width: 90%;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-flow: row nowrap;
-  flex-flow: row nowrap;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
+  -webkit-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
   box-shadow: 0 0 5px 1px #333;
   transition: all 0.5s ease-in-out;
   position: relative;
 }
-/* line 271, ../sass/screen.scss */
+@media (max-width: 530px) {
+  /* line 275, ../sass/screen.scss */
+  body .cont .repoDetails .commiterDetails {
+    width: 80%;
+  }
+}
+/* line 291, ../sass/screen.scss */
 body .cont .repoDetails .commiterDetails .userInfo {
   display: -webkit-flex;
   display: flex;
@@ -336,19 +359,19 @@ body .cont .repoDetails .commiterDetails .userInfo {
   flex: 1 1 20%;
   text-align: center;
 }
-/* line 280, ../sass/screen.scss */
+/* line 300, ../sass/screen.scss */
 body .cont .repoDetails .commiterDetails .userInfo img {
   height: 120px;
   margin-bottom: 20px;
   box-shadow: 0 0 2px 1px #333;
 }
-/* line 289, ../sass/screen.scss */
+/* line 309, ../sass/screen.scss */
 body .cont .repoDetails .commiterDetails .userInfo p {
   font-weight: 200;
   font-size: 0.9em;
   color: #333;
 }
-/* line 297, ../sass/screen.scss */
+/* line 317, ../sass/screen.scss */
 body .cont .repoDetails .commiterDetails .commitInfo {
   padding-top: 20px;
   display: -webkit-flex;
@@ -359,88 +382,94 @@ body .cont .repoDetails .commiterDetails .commitInfo {
   justify-content: flex-start;
   -webkit-align-items: center;
   align-items: center;
-  -webkit-flex: 0 1 80%;
-  flex: 0 1 80%;
+  -webkit-flex: 1 1 79%;
+  flex: 1 1 79%;
   text-align: center;
   margin-bottom: 20px;
 }
-/* line 308, ../sass/screen.scss */
+/* line 328, ../sass/screen.scss */
 body .cont .repoDetails .commiterDetails .commitInfo p span {
   font-weight: 600;
 }
-/* line 312, ../sass/screen.scss */
+/* line 332, ../sass/screen.scss */
 body .cont .repoDetails .commiterDetails .commitInfo p #light {
   font-weight: 100;
   color: #333;
 }
-/* line 322, ../sass/screen.scss */
+/* line 342, ../sass/screen.scss */
 body .cont .repoDetails .canvasPie {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 100% !important;
   box-shadow: 0 0 5px 1px #333;
   padding: 10px;
   transition: all 0.5s ease-in-out;
   position: relative;
 }
-/* line 334, ../sass/screen.scss */
+/* line 354, ../sass/screen.scss */
 body .cont .repoDetails .canvasLine {
   width: 100% !important;
-  position: absolute;
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
   box-shadow: 0 0 5px 1px #333;
   padding: 10px;
+  bottom: 0;
+  position: relative;
 }
 @media (max-width: 805px) {
-  /* line 334, ../sass/screen.scss */
+  /* line 354, ../sass/screen.scss */
   body .cont .repoDetails .canvasLine {
     height: auto !important;
   }
 }
-/* line 345, ../sass/screen.scss */
+/* line 367, ../sass/screen.scss */
 body .cont .repoDetails .canvasDay {
   width: 100% !important;
-  position: absolute;
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
   box-shadow: 0 0 5px 1px #333;
   padding: 10px;
+  bottom: 0;
+  position: relative;
 }
 @media (max-width: 805px) {
-  /* line 345, ../sass/screen.scss */
+  /* line 367, ../sass/screen.scss */
   body .cont .repoDetails .canvasDay {
     height: auto !important;
   }
 }
 
-/*////////////////// NG-CLASS &  NG-Animate /////////////////*/
-/* line 369, ../sass/screen.scss */
+/*////////////////// 
+
+NG-CLASS &  NG-Animate 
+
+/////////////////*/
+/* line 397, ../sass/screen.scss */
 .animate-show {
   opacity: 1;
   left: 0;
 }
 
-/* line 374, ../sass/screen.scss */
+/* line 402, ../sass/screen.scss */
 .animate-show.ng-hide-add, .animate-show.ng-hide-remove {
   transition: all 1s ease-in-out;
 }
 
-/* line 378, ../sass/screen.scss */
+/* line 406, ../sass/screen.scss */
 .animate-show.ng-hide {
   opacity: 0;
   left: 3000px;
 }
 
-/* line 384, ../sass/screen.scss */
+/* line 412, ../sass/screen.scss */
 .animate-show-right {
   opacity: 1;
   right: 0;
 }
 
-/* line 389, ../sass/screen.scss */
+/* line 417, ../sass/screen.scss */
 .animate-show-right.ng-hide-add, .animate-show-right.ng-hide-remove {
   transition: all 0.5s ease-in-out;
 }
 
-/* line 393, ../sass/screen.scss */
+/* line 421, ../sass/screen.scss */
 .animate-show-right.ng-hide {
   opacity: 0;
   right: 2000px;
@@ -453,4 +482,16 @@ body .cont .repoDetails .canvasDay {
   100% {
     background: rgba(255, 255, 255, 0.8);
   }
+}
+@keyframes spin {
+  0% {
+    transform: rotateZ(45deg);
+  }
+}
+/* line 443, ../sass/screen.scss */
+.wait {
+  animation: spin 0.3s linear infinite;
+  height: 16px;
+  margin-left: 5px;
+  margin-top: 3px;
 }

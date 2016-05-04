@@ -10,7 +10,11 @@
 
 $shadow:0 0 5px 1px #333;
 
-/* MEDIA QUERY MIXINS */
+/*
+
+ MEDIA QUERY MIXINS 
+
+ */
 
 $phone-width:385px;
 $tablet-width: 530px;
@@ -42,7 +46,12 @@ $large-width:805px;
   }
 }
 
-/*/////////////////////////////////////////////////*/
+/*/////////////////////// 
+
+Main CSS 
+
+//////////////////////////*/
+
 a {
 	color:black;
 	text-decoration: none;
@@ -59,6 +68,7 @@ body {
 
 		@include display-flex;
 		@include flex-flow(column nowrap);
+		@include align-items(center);
 		margin:0 auto;
 		max-width:800px;
 		box-shadow:0 0 2px 1px #000;
@@ -104,7 +114,7 @@ body {
 					border:1px solid #999;
 					height:22px;
 					width:250px;
-					margin-left:30px;
+					margin-left:20px;
 					margin-right: 5px;
 					padding:0 10px;
 					transition:all 0.3s ease-in-out;
@@ -242,16 +252,21 @@ body {
 
 		.repoDetails {
 
-			padding-top:70px;
-			box-shadow:0 0 0 0 white;
+			padding:0px 20px 20px 0;
 			width:80%;
 			margin:0 auto;
 			position:relative;
+			text-align:center;
 
-
-			@include desktop {
-				padding-top:100px;
+			h4 {
+				margin:60px 0 20px 0;
+				@include desktop {
+					margin-top:100px;
+				}
 			}
+
+
+
 
 			canvas {
 
@@ -259,14 +274,19 @@ body {
 
 			.commiterDetails {
 				
-				padding:40px 20px;
-				margin:10% auto 50px auto;
+				padding:40px 40px;
+				margin:0px auto 30px auto;
+				width:90%;
 				@include display-flex;
-				@include flex-flow(row nowrap);
-				@include justify-content(space-between);
+				@include flex-flow(column nowrap);
+				@include justify-content(center);
+				@include align-items(center);
 				box-shadow:$shadow;
 				transition: all 0.5s ease-in-out;
 				position:relative;
+				@include tablet {
+					width:80%;
+				}
 
 				.userInfo {
 					
@@ -300,7 +320,7 @@ body {
 					@include flex-flow(column nowrap);
 					@include justify-content(flex-start);
 					@include align-items(center);	
-					@include flex(0 1 80%);
+					@include flex(1 1 79%);
 					text-align:center;
 					margin-bottom:20px;
 
@@ -321,7 +341,7 @@ body {
 
 			.canvasPie {
 				
-				margin-bottom:20px;
+				margin-bottom:30px;
 				width: 100% !important;
 				box-shadow:$shadow;
 				padding:10px;
@@ -333,10 +353,12 @@ body {
 
 			.canvasLine {
 				width: 100% !important;
-				position:absolute;
-				transition:all 1s ease-in-out;
+				transition:all 0.5s ease-in-out;
 				box-shadow:$shadow;
 				padding:10px;
+				// margin-bottom: 30px;
+				bottom:0;
+				position: relative;
 				@include large {
 					height:auto !important;
 				}
@@ -344,10 +366,12 @@ body {
 
 			.canvasDay {
 				width: 100% !important;
-				position:absolute;
-				transition:all 1s ease-in-out;
+				transition:all 0.5s ease-in-out;
 				box-shadow:$shadow;
 				padding:10px;
+				// margin-bottom: 30px;
+				bottom:0;
+				position: relative;
 				@include large {
 					height:auto !important;
 				}
@@ -363,7 +387,11 @@ body {
 }
 
 
-/*////////////////// NG-CLASS &  NG-Animate /////////////////*/
+/*////////////////// 
+
+NG-CLASS &  NG-Animate 
+
+/////////////////*/
 
 
 .animate-show {
@@ -403,6 +431,21 @@ body {
 	100% {
 		background: rgba(255,255,255,0.8);
 	}
+
+}
+
+@keyframes spin { 
+	0% { 
+		transform: rotateZ(45deg);
+	}
+}
+
+.wait {
+
+	animation:spin 0.3s linear infinite;
+	height:16px;
+	margin-left:5px;
+	margin-top: 3px;
 
 }
 

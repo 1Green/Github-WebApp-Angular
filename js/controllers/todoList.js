@@ -2,15 +2,23 @@ gitHubApp.controller('gitHubApp', ['$scope', '$http','$window','$timeout',
     function ($scope, $http,$window,$timeout) {
 
     		var container = document.querySelector(".cont");
+    		$scope.ok = 1;
+
+
+// Request repositories list
     		
     		$scope.search = function(search){
 
-    			$http.get("https://api.github.com/search/repositories?q=" + search +"&per_page=10")
+    			$scope.repoDetails= [];
+    			$scope.ok = 2;
+
+    			$http.get("https://api.github.com/search/repositories?q=" + search +"&per_page=100")
 		     
 		      .success(function (data) {
 		      		
-
+		      		$scope.ok = 3;
 		      		$scope.repoDetails = [];
+
 				$scope.repos = data.items;
 				$scope.count = data.total_count;
 				$scope.count == 0 ? $scope.count = "No" : $scope.count;
@@ -21,14 +29,16 @@ gitHubApp.controller('gitHubApp', ['$scope', '$http','$window','$timeout',
      			 });
 		};
 
+// Request repositories details
 
-		$scope.loadRepo = function(fullName){
+		$scope.loadRepo = function(fullName){ 
 
 				$http.get("https://api.github.com/repos/"+ fullName +"/commits?per_page=100")
 				.success(function(data) {
 
 					$scope.graph = 1;
 					$scope.pie = 1;
+					$scope.piebot = 1;
 					$scope.repoDetails = data;
 					$scope.users = {};
 
@@ -50,9 +60,9 @@ gitHubApp.controller('gitHubApp', ['$scope', '$http','$window','$timeout',
 					$scope.dayData = new Array(7);
 					$scope.dayData.fill(0);
 
+// Commit count per user
 
-
-					for(users of $scope.repoDetails) {  // Commit count per user
+					for(users of $scope.repoDetails) {  		
 						$scope.users[users.commit.author.name] = {
 							"count" : 0, 
 							"login" : users.author !== null ? users.author.login : users.commit.author.name
@@ -65,8 +75,10 @@ gitHubApp.controller('gitHubApp', ['$scope', '$http','$window','$timeout',
 
 					}
 
-					$timeout(function(){
-						for (user in $scope.users) { 	// Pie Chart Data
+// Pie Chart Data
+
+					$timeout(function(){		
+						for (user in $scope.users) { 	
 							$scope.chartLabel.push(user);
 							$scope.chartCount.push($scope.users[user].count);
 						}
@@ -74,7 +86,9 @@ gitHubApp.controller('gitHubApp', ['$scope', '$http','$window','$timeout',
 					}, 0);
 
 
-					for (date of $scope.commitDate) {  // Line Chart Data
+// Line Chart Data
+
+					for (date of $scope.commitDate) {  		
 						$scope.weekDay.push(date.day);
 						$scope.month.push(date.month);
 					}
@@ -92,45 +106,50 @@ gitHubApp.controller('gitHubApp', ['$scope', '$http','$window','$timeout',
 						$scope.dayLabel = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 						$scope.weekDay.forEach(countDay);
 						$scope.dayDataComplete.push($scope.dayData);
-					},2000);
+					},2400);
 					
 
 				});
 
 		}
 
-
+// Last commit details
 
 		$scope.userDetails = function(userName) {
 
-			$scope.get = false;
-			$scope.pie = 2;
-			$scope.commiter = {};
+			if (userName.length){
 
-			$timeout(function(){
-				$scope.pie = 3;
-			},500);
+				$scope.get = false;
+				$scope.pie = 2;
+				$scope.commiter = {};
 
-			for (commits of $scope.repoDetails){
-				if (commits.commit.author.name == userName[0].label && !$scope.get) {
-					
-					$scope.get = true;
-					
-					$http.get(commits.url)
+				$timeout(function(){
+					$scope.pie = 3;
+				},500);
+
+				for (commits of $scope.repoDetails){
+					if (commits.commit.author.name == userName[0].label && !$scope.get) {
 						
-						.success(function(data){
+						$scope.get = true;
+						
+						$http.get(commits.url)
+							
+							.success(function(data){
 
-						$scope.commiter = data;
-						$scope.commitDate = formatDate($scope.commiter.commit.author.date);
+							$scope.commiter = data;
+							$scope.commitDate = formatDate($scope.commiter.commit.author.date);
 
-					});
+						});
 
+					}
 				}
+
 			}
+
 
 		}
 
-
+// Date format & count functions
 
 		function formatDate(date) {
 			var NewDate = new Date(date);
@@ -153,11 +172,29 @@ gitHubApp.controller('gitHubApp', ['$scope', '$http','$window','$timeout',
 				$scope.dayData[day-1]++;
 		}
 
+
+
 		$scope.delayFade = function() {
 			$scope.pie = 2;
 
 			$timeout(function(){
 				$scope.pie = 1;
+			},500);
+		}
+
+		$scope.bottomGraphShow = function() {
+			$scope.piebot = 2;
+
+			$timeout(function(){
+				$scope.piebot = 3;
+			},500);
+		}
+
+		$scope.bottomGraphHide = function() {
+			$scope.piebot = 2;
+
+			$timeout(function(){
+				$scope.piebot = 1;
 			},500);
 		}
 

@@ -19,24 +19,23 @@ html(lang="en")
 		div.cont
 			div.search
 				form.searchBox(ng-submit="search(repoSearch)")
-					input(type='text' placeholder="Search here" ng-model="repoSearch")
+					input(type='text' placeholder="Search repositories" ng-model="repoSearch")
 					input(type="submit" value="Search" ng-click="search(repoSearch)")
+					i(class="fa fa-spinner  wait" aria-hidden="true" ng-show="ok==2" )
 				div.rightSearch
 					h4(ng-show="count && !repoDetails.length") {{count}} repositories found
 					h4(ng-show="repoDetails.length") Results for  the {{repoDetails.length}} last commits.
 					select(ng-model="sortBy" ng-show="!repoDetails.length")
-						option(value="") Sort by
-						option(value="-score") Pertinence
+						option(value="") Pertinence
 						option(value="-stargazers_count") Stars
 						option(value="-forks_count") Forks
-			div.searchResult(ng-show="!repoDetails.length")
+			div.searchResult(ng-show="!repoDetails.length && ok != 2")
 				div.repos(ng-repeat="repo in repos | orderBy : sortBy" ng-click="loadRepo(repo.full_name)" class="animate-repeat")   
 					div.avatar
 						img(src="{{repo.owner.avatar_url}}")
 					div.description
 						h2 {{repo.name}} by <span>{{repo.owner.login}}</span>
 						h3 {{repo.description}}
-						
 					div.points
 						.forks
 							i(class="fa fa-code-fork" aria-hidden="true")
@@ -45,7 +44,8 @@ html(lang="en")
 							i(i class="fa fa-star" aria-hidden="true")
 							p {{repo.stargazers_count}}
 			div.repoDetails(ng-show="repoDetails.length")
-				div.canvasPie( ng-show="pie == 1" class="animate-show-right")
+				h4 Click on charts for more details.
+				div.canvasPie(ng-click="false" ng-show="pie == 1" class="animate-show-right")
 					canvas(id="doughnut" chart-legend="true" class="chart chart-doughnut" chart-data="chartCount" chart-labels="chartLabel" chart-click="userDetails")
 				div.commiterDetails(ng-click="delayFade()" ng-show="pie == 3" class="animate-show-right")
 					div.userInfo
@@ -55,7 +55,7 @@ html(lang="en")
 					div.commitInfo
 						p Last commit on the <span>{{commitDate.fulldate}}</span> at <span>{{commitDate.fulltime}}</span><br><br>
 						p with message : <br><br> <span id="light">{{commiter.commit.message}}</span>
-				div.canvasLine(ng-click="graph = 2" ng-show="graph == 1" class="animate-show")
+				div.canvasLine(ng-click="bottomGraphShow()" ng-show="piebot == 1" class="animate-show")
 					canvas(id="line" class="chart chart-line" chart-series="Commits" chart-data="lineDataComplete" chart-labels="lineLabel" chart-legend="false")
-				div.canvasDay(ng-click="graph = 1" ng-show="graph == 2" class="animate-show")
+				div.canvasDay(ng-click="bottomGraphHide()" ng-show="piebot == 3" class="animate-show")
 					canvas(id="line" class="chart chart-line" chart-series="Commits" chart-data="dayDataComplete" chart-labels="dayLabel" chart-legend="false")
